@@ -4,12 +4,12 @@ function loadEnemies()
  end
 function updateEnemies(dt)  -- main update function
   for i,v in ipairs(enemies) do
-    v.x, v.y = v.shape[1]:center() --same as above, but for our test enemies
     if v.hp <= 0 then
       v:onDeath(i)  -- call on-death method
     end
     v.move = v.movement[1].move
     v:move(dt)  -- call move method
+    v.x, v.y = v.shape[1]:center() --same as above, but for our test enemies
     if v.y > 600 then  -- if outside room
       table.remove(enemies, i)  -- delete enemy
     end

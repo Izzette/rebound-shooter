@@ -3,6 +3,7 @@ function loadBullets()
   powerUps = {}
 end
 function updateBullets(dt)
+  local delete = {}
   for i,v in ipairs(bullets) do
     if v.time <= cTime then
       v:afterTime(i)
@@ -91,7 +92,7 @@ function spawnPowerUp(x, y, typeP)
       end
     end
     powerup.move = function(self, dt)
-      self.shape:move(0, 50 * dt)  -- scrolling speed
+      self.shape:move(0, 25 * dt)  -- scrolling speed
     end
     powerup.onCollide = function(self, obj, i)
       if obj.sHp - obj.hp >= 50 then
@@ -110,7 +111,7 @@ function spawnPowerUp(x, y, typeP)
       end
     end
     powerup.move = function(self, dt)
-      self.shape:move(0, 50 * dt)  -- scrolling speed
+      self.shape:move(0, 25 * dt)  -- scrolling speed
     end
     powerup.onCollide = function(self, obj, i)
       if obj.sCharge - obj.charge > 50 then

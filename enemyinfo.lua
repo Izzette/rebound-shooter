@@ -26,12 +26,12 @@ function refEnemy(typeE, x, y)
     ref.bullets = {{typeB = "basic", rate = 0.25},{typeB = "basic", rate = 0.25},{typeB = "basic", rate = 0.5}} -- bullet shooting pattern
     ref.movement = {{},{}}  -- movement directory for all variable data
     ref.movement[1].move = function(self, dt)  -- move method for movement[1]
-      self.shape[1]:move(-20 * dt, 70 * dt)  -- down, left, px/sec
+      self.shape[1]:move(-20 * dt, 40 * dt)  -- down, left, px/sec
     end
     ref.movement[1].switch = 1
     ref.movement[1].onSwitch = function(self, i) end  -- no on switch action
     ref.movement[2].move = function(self, dt)  -- move method for movement[2]
-      self.shape[1]:move(20 * dt, 70 * dt)
+      self.shape[1]:move(20 * dt, 40 * dt)
     end
     ref.movement[2].switch = 1 -- time until movement[i+1]
     ref.movement[2].onSwitch = function(self, i) end  -- no on switch action
@@ -60,7 +60,7 @@ function refEnemy(typeE, x, y)
     ref.bullets = {{typeB = "noshoot", rate = 0}}  -- doesn't shoot
     ref.movement = {{}}
     ref.movement[1].move = function(self, dt)  -- move method for movement[1]
-      self.shape[1]:move(0, 50 * dt)  -- scrolling speed
+      self.shape[1]:move(0, 25 * dt)  -- scrolling speed
     end
     ref.movement[1].switch = 1  -- movement[1] switch after one second
     ref.movement[1].onSwitch = function(self, i) end  -- no method on-switch
@@ -93,40 +93,40 @@ function refEnemy(typeE, x, y)
     ref.bullets = {{typeB = "basic", rate = 0.15}}  -- long delay after every 6th bullet, short on the 3rd
     ref.movement = {{},{},{},{},{}}
     ref.movement[1].move = function(self, dt)  -- move method for movement[1]
-      self.shape[1]:move(0, 100 * dt)
+      self.shape[1]:move(0, 50 * dt)
     end
     ref.movement[1].switch = 0.75
     ref.movement[1].onSwitch = function(self, i) end
     ref.movement[2].move = function(self, dt)  -- move method for movement[2]
-      self.shape[1]:move(-25 * dt, 25 * dt)
+      self.shape[1]:move(-25 * dt, 35 * dt)
     end
     ref.movement[2].switch = 0.8
     ref.movement[2].onSwitch = function(self, i)  -- change bullet pattern
       enemies[i].bullets = {{typeB = "basic", rate = 0.2},{typeB = "basic", rate = 0.2},{typeB = "basic", rate = 0.4}}
     end
     ref.movement[3].move = function(self, dt)
-      self.shape[1]:move(25 * dt, 25 * dt)
+      self.shape[1]:move(25 * dt, 35 * dt)
     end
     ref.movement[3].switch = 1.6
     ref.movement[3].onSwitch = function(self, i)
       enemies[i].bullets = {{typeB = "unblock", rate = (1.6 / 6)}}
     end
     ref.movement[4].move = function(self, dt)  -- move method for movement[2]
-      self.shape[1]:move(-25 * dt, 25 * dt)
+      self.shape[1]:move(-25 * dt, 35 * dt)
     end
     ref.movement[4].switch = 0.8
     ref.movement[4].onSwitch = function(self, i)  -- change bullet pattern
       enemies[i].bullets = {{typeB = "basic", rate = 0.2},{typeB = "basic", rate = 0.2},{typeB = "basic", rate = 0.4}}
     end
     ref.movement[5].move = function(self, dt)
-      self.shape[1]:move(0, 25 * dt)
+      self.shape[1]:move(0, 35 * dt)
     end
     ref.movement[5].switch = 0.5
     ref.movement[5].onSwitch = function(self, i) 
       self.movement[2].onSwitch = function(self, i)
         self.movement = {{}}
         self.movement[1].move = function(self, dt)
-          self.shape[1]:move(0, 100 * dt)
+          self.shape[1]:move(0, 50 * dt)
         end
         self.movement[1].switch = 1
         self.movement[1].onSwitch = function(self, i) end
@@ -182,7 +182,7 @@ function refEnemy(typeE, x, y)
     ref.movement[1].move = function(self, dt)  -- move method for movement[1]
       self.movement[1].move = function(self, dt)  -- move method for movement[1]
         for i,v in ipairs(self.shape) do
-          v:move(0, 75 * dt)
+          v:move(0, 40 * dt)
         end
       end
     end
