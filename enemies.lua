@@ -1,6 +1,7 @@
 function loadEnemies()
   EI = require 'enemyinfo'  -- load (and run) enemyinfo.lua
   enemies = {}  -- holds all on screen enemies
+  deleteTimeE = 7
  end
 function updateEnemies(dt)  -- main update function
   for i,v in ipairs(enemies) do
@@ -27,6 +28,14 @@ function updateEnemies(dt)  -- main update function
       table.remove(v.bullets, 1)
       v.nextShot = v.nextShot + v.bullets[1].rate
     end
+  end
+  if deleteTimeE >= cTime then
+    for i,v in ipairs(enemies) do
+      if v.y > 800 then
+        table.remove(ememies, i)
+      end
+    end
+    deleteTimeE = deleteTimeE + 5
   end
   for k,v in pairs(enemiesSpawn) do
     if v.c and cTime >= v.t then  -- if the enemy hasn't spawned yet, and it's time

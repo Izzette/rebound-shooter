@@ -188,6 +188,23 @@ function refEnemy(typeE, x, y)
     end
     ref.movement[1].switch = 1  -- movement[1] switch after one second
     ref.movement[1].onSwitch = function(self, i) end  -- no method on-switch
+  elseif typeE == "endGame" then
+    ref.onSpawn = function(self)
+      for k,v in pairs(levels) do
+        for ie,ve in ipairs(v) do
+          ve.c = true
+        end
+      end
+      loveframes.SetState("mainmenu")
+      enemies = {}
+      bullets = {}
+      ship.shots = {}
+      powerUps = {}
+    end
+    ref.movement = {{}}
+    ref.movement[1].switch = 1
+    ref.bullets = {{}}
+    ref.bullets[1].rate = 1
   end
   return ref  -- return the generated reference information
 end

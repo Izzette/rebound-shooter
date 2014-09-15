@@ -1,9 +1,9 @@
 function loadBullets()
   bullets = {} --holds all non-friendly bullets
   powerUps = {}
+  deleteTimeB = 5
 end
 function updateBullets(dt)
-  local delete = {}
   for i,v in ipairs(bullets) do
     if v.time <= cTime then
       v:afterTime(i)
@@ -24,6 +24,24 @@ function updateBullets(dt)
     end
     v:move(dt)  -- moves the powerups
     v.x, v.y = v.shape:center()
+  end
+  if cTime >= deleteTimeB then
+    for i,v in ipairs(bullets) do
+      if v.y > 800 then
+        table.remove(bullets, i)
+      end
+    end
+    for i,v in ipairs(ship.shots) do
+      if v.y < 0 then
+        table.remove(ship.shots, i)
+      end
+    end
+    for i,v in ipairs(powerUps) do
+      if v.y > 800 then
+        table.remove(powerUps, i)
+      end
+    end
+    deleteTimeB = deleteTimeB + 5
   end
 end
 function drawBullets()
